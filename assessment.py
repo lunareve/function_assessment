@@ -33,7 +33,12 @@ def my_hometown(town_name):
 #        returns the concatenation of the two names in one string.
 
 def full_name(first_name, last_name):
-    """Takes first and last name and returns full name."""
+    """Takes first and last name and returns full name.
+
+    >>> full_name("Balloonicorn", "Jones")
+    'Balloonicorn Jones'
+
+    """
     return first_name + " " + last_name
 
 #    (c) Write a function that takes a home town, a first name, and a last name
@@ -41,6 +46,22 @@ def full_name(first_name, last_name):
 #        "Hi, 'full name here', we're from the same place!", or "Hi 'full name
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
+
+def greeting(home_town, first_name, last_name):
+    """Takes strings home town, first name, and last name and returns a greeting.
+
+    >>> greeting("San Ramon", "Hamster", "Cat")
+    Hi, Hamster Cat, we're from the same place!
+
+    >>> greeting("San Francisco", "Balloonicorn", "Jones")
+    Hi, Balloonicorn Jones, I\'d like to visit San Francisco!
+
+    """
+
+    if my_hometown(home_town):
+        print "Hi, {}, we're from the same place!".format(full_name(first_name, last_name))
+    else:
+        print "Hi, {}, I'd like to visit {}!".format(full_name(first_name, last_name), home_town)
 
 ###############################################################################
 
@@ -87,7 +108,7 @@ def is_berry(fruit):
 
     """
 
-    pass
+    return fruit == "strawberry" or fruit == "raspberry" or fruit == "blackberry"
 
 
 def shipping_cost(fruit):
@@ -101,7 +122,10 @@ def shipping_cost(fruit):
 
     """
 
-    pass
+    if is_berry(fruit):
+        return 0
+    else:
+        return 5
 
 
 def append_to_list(lst, num):
@@ -113,10 +137,11 @@ def append_to_list(lst, num):
 
     """
 
-    pass
+    lst.append(num)
+    return lst
 
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(base_price, state, tax_rate = 0.05):
     """Calculate total price of an item, figuring in state taxes and fees.
 
     >>> calculate_price(40, "CA")
@@ -139,7 +164,22 @@ def calculate_price(FILL_ME_IN):
 
     """
 
-    pass
+    if state == "CA":
+        subtotal = base_price + base_price * tax_rate
+        fees = subtotal * 0.03
+        return subtotal + fees
+
+    elif state == "PA":
+        return base_price + base_price * tax_rate + 2.00
+
+    elif state == "MA":
+        if base_price < 100:
+            return base_price + base_price * tax_rate + 1.00
+        else:
+            return base_price + base_price * tax_rate + 3.00
+
+    else:
+        return base_price + base_price * tax_rate
 
 
 ###############################################################################
