@@ -194,6 +194,18 @@ def calculate_price(base_price, state, tax_rate = 0.05):
 #        isn't something we've discussed yet in class; you might need to google how to
 #        write a Python function that takes in an arbitrary number of arguments.
 
+def add_to_list(lst, *extra_items):
+    """Takes a list and adds any number of items to the list, then returns the list.
+
+    >>> add_to_list([1, 2, 3], 4, 5, 6)
+    [1, 2, 3, 4, 5, 6]
+
+    """
+
+    lst.extend(extra_items)
+    return lst
+
+
 #    (b) Make a new function with a nested inner function.
 #        The outer function will take in a word.
 #        The inner function will multiply that word by 3.
@@ -205,6 +217,9 @@ def calculate_price(base_price, state, tax_rate = 0.05):
 
 #        >>> outer("Balloonicorn")
 #        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+def triple_word(word):
+    return (word, lambda word: word * 3)
 
 
 ###############################################################################
